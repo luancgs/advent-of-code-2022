@@ -1,3 +1,8 @@
+/*
+	Day 1: Calorie Counting
+	Link: https://adventofcode.com/2022/day/1
+*/
+
 package day1
 
 import (
@@ -7,24 +12,24 @@ import (
 	"strings"
 )
 
-// https://adventofcode.com/2022/day/1
+func getInput() ([][]int, error) {
+	inputPath := "./day1/input.txt"
 
-func Part1() (int, error) {
-	inputName := "./day-1/input.txt"
-
-	content, err := os.ReadFile(inputName)
+	content, err := os.ReadFile(inputPath)
 
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
 
-	totalCaloriesList := strings.Split(string(content), "\n\n")
-	greatestNum := 0
+	totalElvesCaloriesArrayString := strings.Split(string(content), "\n\n")
+	var totalElvesCaloriesArrayInt [][]int
 
-	for _, element := range totalCaloriesList {
-		singleCaloriesList := strings.Split(element, "\n")
-		singleCaloriesSum := 0
-		for _, element := range singleCaloriesList {
+	for _, element := range totalElvesCaloriesArrayString {
+
+		singleElfCaloriesArrayString := strings.Split(element, "\n")
+		var singleElfCaloriesArrayInt []int
+
+		for _, element := range singleElfCaloriesArrayString {
 
 			if element == "" {
 				continue
@@ -33,61 +38,75 @@ func Part1() (int, error) {
 			num, err := strconv.Atoi(element)
 
 			if err != nil {
-				return 0, err
+				return nil, err
 			}
 
-			singleCaloriesSum += num
+			singleElfCaloriesArrayInt = append(singleElfCaloriesArrayInt, num)
 		}
 
-		if singleCaloriesSum > greatestNum {
-			greatestNum = singleCaloriesSum
-		}
+		totalElvesCaloriesArrayInt = append(totalElvesCaloriesArrayInt, singleElfCaloriesArrayInt)
 	}
 
-	return greatestNum, nil
+	return totalElvesCaloriesArrayInt, nil
+}
+
+func Part1() (int, error) {
+
+	input, err := getInput()
+
+	if err != nil {
+		return 0, err
+	}
+
+	greatestSum := 0
+
+	for _, singleElfCaloriesArray := range input {
+
+		singleElfCaloriesSum := 0
+
+		for _, calories := range singleElfCaloriesArray {
+			singleElfCaloriesSum += calories
+		}
+
+		if singleElfCaloriesSum > greatestSum {
+			greatestSum = singleElfCaloriesSum
+		}
+
+	}
+
+	return greatestSum, nil
 }
 
 func Part2() (int, error) {
-	inputName := "./day-1/input.txt"
 
-	content, err := os.ReadFile(inputName)
+	input, err := getInput()
 
 	if err != nil {
 		return 0, err
 	}
 
-	totalCaloriesList := strings.Split(string(content), "\n\n")
-	var sumCaloriesList []int
+	var sumCaloriesArray []int
 
-	for _, element := range totalCaloriesList {
-		singleCaloriesList := strings.Split(element, "\n")
-		singleCaloriesSum := 0
-		for _, element := range singleCaloriesList {
+	for _, singleElfCaloriesArray := range input {
 
-			if element == "" {
-				continue
-			}
+		singleElfCaloriesSum := 0
 
-			num, err := strconv.Atoi(element)
-
-			if err != nil {
-				return 0, err
-			}
-
-			singleCaloriesSum += num
+		for _, calories := range singleElfCaloriesArray {
+			singleElfCaloriesSum += calories
 		}
 
-		sumCaloriesList = append(sumCaloriesList, singleCaloriesSum)
+		sumCaloriesArray = append(sumCaloriesArray, singleElfCaloriesSum)
 	}
 
-	sumSlice := sumCaloriesList[:]
+	sumSlice := sumCaloriesArray[:]
 	sort.Sort(sort.Reverse(sort.IntSlice(sumSlice)))
 
-	topThreeCalories := sumCaloriesList[:3]
-	sum := 0
+	topThreeCalories := sumCaloriesArray[:3]
+
+	topThreeSum := 0
 	for _, element := range topThreeCalories {
-		sum += element
+		topThreeSum += element
 	}
 
-	return sum, nil
+	return topThreeSum, nil
 }
