@@ -1,7 +1,6 @@
-package main
+package day1
 
 import (
-	"fmt"
 	"os"
 	"sort"
 	"strconv"
@@ -10,28 +9,7 @@ import (
 
 // https://adventofcode.com/2022/day/1
 
-func main() {
-	output1, err := part1()
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	fmt.Println("Day 1 - Part 1 | Output: ", output1)
-
-	output2, err := part2()
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	fmt.Println("Day 1 - Part 2 | Output: ", output2)
-
-}
-
-func part1() (int, error) {
+func Part1() (int, error) {
 	inputName := "./day-1/input.txt"
 
 	content, err := os.ReadFile(inputName)
@@ -69,7 +47,7 @@ func part1() (int, error) {
 	return greatestNum, nil
 }
 
-func part2() (int, error) {
+func Part2() (int, error) {
 	inputName := "./day-1/input.txt"
 
 	content, err := os.ReadFile(inputName)

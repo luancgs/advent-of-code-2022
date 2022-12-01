@@ -1,3 +1,3 @@
-module day-1
+module adventofcode2022
 
 go 1.19
