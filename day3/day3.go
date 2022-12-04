@@ -1,6 +1,6 @@
 /*
 	Day 3: Rucksack Reorganization
-	Link: https://adventofcode.com/2022/day/1
+	Link: https://adventofcode.com/2022/day/3
 */
 
 package day3
