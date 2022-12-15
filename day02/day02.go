@@ -3,7 +3,7 @@
 	Link: https://adventofcode.com/2022/day/2
 */
 
-package day2
+package day02
 
 import (
 	"os"

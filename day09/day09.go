@@ -3,7 +3,7 @@
 	Link: https://adventofcode.com/2022/day/9
 */
 
-package day9
+package day09
 
 import (
 	"fmt"
