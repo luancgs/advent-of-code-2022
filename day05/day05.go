@@ -6,6 +6,7 @@
 package day05
 
 import (
+	S "adventofcode2022/utils/stack"
 	"os"
 	"strconv"
 	"strings"
@@ -25,7 +26,7 @@ func getInput() (string, string, error) {
 	return splitContent[0], splitContent[1], nil
 }
 
-func getInputStacks() ([]Stack, error) {
+func getInputStacks() ([]S.Stack, error) {
 	inputStacks, _, err := getInput()
 
 	if err != nil {
@@ -40,11 +41,11 @@ func getInputStacks() ([]Stack, error) {
 
 	stackCounterArray := strings.Split(inputStacksLines[0], "")
 
-	var stackArray []Stack
+	var stackArray []S.Stack
 
 	for _, stackNum := range stackCounterArray {
 		if stackNum != " " {
-			stackArray = append(stackArray, NewStack())
+			stackArray = append(stackArray, S.NewStack())
 		}
 	}
 
