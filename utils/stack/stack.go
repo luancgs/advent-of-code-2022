@@ -1,4 +1,4 @@
-package day05
+package stack
 
 import (
 	"container/list"
@@ -54,6 +54,16 @@ func (s *Stack) PopMany(total int) ([]interface{}, error) {
 
 func (s Stack) Size() int {
 	return s.stack.Len()
+}
+
+func (s Stack) Search(element interface{}) interface{} {
+	for e := s.stack.Front(); e != nil; e = e.Next() {
+		if e.Value == element {
+			return element
+		}
+	}
+
+	return nil
 }
 
 func NewStack() Stack {
