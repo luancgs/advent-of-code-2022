@@ -6,53 +6,44 @@
 package day01
 
 import (
-	"os"
+	"adventofcode2022/utils/input"
 	"sort"
 	"strconv"
 	"strings"
 )
 
-func getInput() ([][]int, error) {
-	inputPath := "./inputs/2022/day01.txt"
+func formatInput() ([][]int, error) {
+	content := input.GetInput(1)
 
-	content, err := os.ReadFile(inputPath)
+	elvesCaloriesSlice := strings.Split(content, "\n\n")
+	var elvesCaloriesSliceInt [][]int
 
-	if err != nil {
-		return nil, err
-	}
+	for _, elfCalories := range elvesCaloriesSlice {
+		elfCaloriesSlice := strings.Split(elfCalories, "\n")
+		var elfCaloriesInt []int
 
-	totalElvesCaloriesArrayString := strings.Split(string(content), "\n\n")
-	var totalElvesCaloriesArrayInt [][]int
-
-	for _, element := range totalElvesCaloriesArrayString {
-
-		singleElfCaloriesArrayString := strings.Split(element, "\n")
-		var singleElfCaloriesArrayInt []int
-
-		for _, element := range singleElfCaloriesArrayString {
-
-			if element == "" {
+		for _, calories := range elfCaloriesSlice {
+			if calories == "" {
 				continue
 			}
 
-			num, err := strconv.Atoi(element)
+			num, err := strconv.Atoi(calories)
 
 			if err != nil {
 				return nil, err
 			}
 
-			singleElfCaloriesArrayInt = append(singleElfCaloriesArrayInt, num)
+			elfCaloriesInt = append(elfCaloriesInt, num)
 		}
 
-		totalElvesCaloriesArrayInt = append(totalElvesCaloriesArrayInt, singleElfCaloriesArrayInt)
+		elvesCaloriesSliceInt = append(elvesCaloriesSliceInt, elfCaloriesInt)
 	}
 
-	return totalElvesCaloriesArrayInt, nil
+	return elvesCaloriesSliceInt, nil
 }
 
 func Part1() (int, error) {
-
-	input, err := getInput()
+	input, err := formatInput()
 
 	if err != nil {
 		return 0, err
@@ -60,18 +51,16 @@ func Part1() (int, error) {
 
 	greatestSum := 0
 
-	for _, singleElfCaloriesArray := range input {
+	for _, elfCalories := range input {
+		elfCaloriesSum := 0
 
-		singleElfCaloriesSum := 0
-
-		for _, calories := range singleElfCaloriesArray {
-			singleElfCaloriesSum += calories
+		for _, calories := range elfCalories {
+			elfCaloriesSum += calories
 		}
 
-		if singleElfCaloriesSum > greatestSum {
-			greatestSum = singleElfCaloriesSum
+		if elfCaloriesSum > greatestSum {
+			greatestSum = elfCaloriesSum
 		}
-
 	}
 
 	return greatestSum, nil
@@ -79,31 +68,29 @@ func Part1() (int, error) {
 
 func Part2() (int, error) {
 
-	input, err := getInput()
+	input, err := formatInput()
 
 	if err != nil {
 		return 0, err
 	}
 
-	var sumCaloriesArray []int
+	var sumCaloriesSlice []int
 
-	for _, singleElfCaloriesArray := range input {
+	for _, elfCalories := range input {
+		elfCaloriesSum := 0
 
-		singleElfCaloriesSum := 0
-
-		for _, calories := range singleElfCaloriesArray {
-			singleElfCaloriesSum += calories
+		for _, calories := range elfCalories {
+			elfCaloriesSum += calories
 		}
 
-		sumCaloriesArray = append(sumCaloriesArray, singleElfCaloriesSum)
+		sumCaloriesSlice = append(sumCaloriesSlice, elfCaloriesSum)
 	}
 
-	sumSlice := sumCaloriesArray[:]
-	sort.Sort(sort.Reverse(sort.IntSlice(sumSlice)))
+	sort.Sort(sort.Reverse(sort.IntSlice(sumCaloriesSlice)))
 
-	topThreeCalories := sumCaloriesArray[:3]
-
+	topThreeCalories := sumCaloriesSlice[:3]
 	topThreeSum := 0
+
 	for _, element := range topThreeCalories {
 		topThreeSum += element
 	}
