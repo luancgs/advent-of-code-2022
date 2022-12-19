@@ -12,7 +12,7 @@ import (
 )
 
 func getInput() ([][][]int, error) {
-	inputPath := "./day4/input.txt"
+	inputPath := "./inputs/2022/day04.txt"
 
 	content, err := os.ReadFile(inputPath)
 

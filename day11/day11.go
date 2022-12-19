@@ -92,7 +92,7 @@ func throwItems(monkey int, monkeysPointer *[]monkey, reliefFactor bool) error {
 }
 
 func getInput() ([]monkey, error) {
-	inputPath := "./day11/input.txt"
+	inputPath := "./inputs/2022/day11.txt"
 
 	input, err := os.ReadFile(inputPath)
 

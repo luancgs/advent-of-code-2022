@@ -11,7 +11,7 @@ import (
 )
 
 func getInput() (string, error) {
-	inputPath := "./day6/input.txt"
+	inputPath := "./inputs/2022/day06.txt"
 
 	content, err := os.ReadFile(inputPath)
 

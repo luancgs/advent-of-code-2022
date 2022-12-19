@@ -29,7 +29,7 @@ const internalSpace int = 70000000
 const updateSpace int = 30000000
 
 func getInput() (dir, error) {
-	inputPath := "./day7/input.txt"
+	inputPath := "./inputs/2022/day07.txt"
 
 	content, err := os.ReadFile(inputPath)
 

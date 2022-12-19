@@ -43,7 +43,7 @@ func (s square) canClimb(nextSquare square) bool {
 }
 
 func getInput() ([][]square, []int, []int, error) {
-	inputPath := "./day12/input.txt"
+	inputPath := "./inputs/2022/day12.txt"
 
 	content, err := os.ReadFile(inputPath)
 

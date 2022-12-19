@@ -18,7 +18,7 @@ type packetPair struct {
 }
 
 func getInput() ([]packetPair, error) {
-	inputPath := "./day13/input.txt"
+	inputPath := "./inputs/2022/day13.txt"
 
 	content, err := os.ReadFile(inputPath)
 

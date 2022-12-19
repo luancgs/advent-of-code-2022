@@ -115,7 +115,7 @@ func newRoundPart2(opponentInput string, myInput string) gameRoundPart2 {
 }
 
 func getInput() ([][]string, error) {
-	inputPath := "./day2/input.txt"
+	inputPath := "./inputs/2022/day02.txt"
 
 	content, err := os.ReadFile(inputPath)
 

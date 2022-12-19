@@ -13,7 +13,7 @@ import (
 const allItems = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 func getInput() ([]string, [][]string, error) {
-	inputPath := "./day3/input.txt"
+	inputPath := "./inputs/2022/day03.txt"
 
 	content, err := os.ReadFile(inputPath)
 

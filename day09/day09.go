@@ -113,7 +113,7 @@ func getDirectionNumber(direction string) int {
 }
 
 func getInput() ([][]int, error) {
-	inputPath := "./day9/input.txt"
+	inputPath := "./inputs/2022/day09.txt"
 
 	input, err := os.ReadFile(inputPath)
 
