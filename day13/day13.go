@@ -1,3 +1,8 @@
+/*
+	Day 13: Distress Signal
+	Link: https://adventofcode.com/2022/day/13
+*/
+
 package day13
 
 import (
