@@ -6,20 +6,14 @@
 package day06
 
 import (
-	"os"
+	"adventofcode2022/utils/input"
 	"strings"
 )
 
-func getInput() (string, error) {
-	inputPath := "./inputs/2022/day06.txt"
+func formatInput(reader input.InputReader) (string, error) {
+	content := reader.GetInput(6)
 
-	content, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return "", err
-	}
-
-	trimmedContent := strings.Trim(string(content), "\n")
+	trimmedContent := strings.Trim(content, "\n")
 
 	return trimmedContent, nil
 }
@@ -48,8 +42,8 @@ func getIndexOfUniqueChars(input string, chars int) int {
 	return index
 }
 
-func Part1() (int, error) {
-	input, err := getInput()
+func Part1(reader input.InputReader) (int, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -58,8 +52,8 @@ func Part1() (int, error) {
 	return getIndexOfUniqueChars(input, 4), nil
 }
 
-func Part2() (int, error) {
-	input, err := getInput()
+func Part2(reader input.InputReader) (int, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
