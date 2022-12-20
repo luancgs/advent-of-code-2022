@@ -6,9 +6,9 @@
 package day13
 
 import (
+	"adventofcode2022/utils/input"
 	"encoding/json"
 	"fmt"
-	"os"
 	"reflect"
 	"strings"
 )
@@ -22,16 +22,10 @@ type packetPair struct {
 	right packet
 }
 
-func getInput() ([]packetPair, error) {
-	inputPath := "./inputs/2022/day13.txt"
+func formatInput(reader input.InputReader) ([]packetPair, error) {
+	content := reader.GetInput(13)
 
-	content, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return nil, err
-	}
-
-	allPairsString := strings.Split(string(content), "\n\n")
+	allPairsString := strings.Split(content, "\n\n")
 	var output []packetPair
 
 	for _, pairString := range allPairsString {
@@ -121,8 +115,8 @@ func compareValues(valueLeft any, valueRight any) int {
 	}
 }
 
-func Part1() (int, error) {
-	input, err := getInput()
+func Part1(reader input.InputReader) (int, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -141,8 +135,8 @@ func Part1() (int, error) {
 	return indexSum, nil
 }
 
-func Part2() (int, error) {
-	input, err := getInput()
+func Part2(reader input.InputReader) (int, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
