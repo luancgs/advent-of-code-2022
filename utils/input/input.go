@@ -5,12 +5,18 @@ import (
 	"os"
 )
 
+type InputReader interface {
+	GetInput(day int, isTest ...bool) string
+}
+
+type Reader struct{}
+
 // Receives the day and returns the input as a string
-func GetInput(day int, isTest ...bool) string {
+func (Reader) GetInput(day int, isTest ...bool) string {
 	var inputPath string
 
 	if len(isTest) > 0 && isTest[0] {
-		inputPath = fmt.Sprintf("./inputs/2022/sample/day%02d.txt", day)
+		inputPath = fmt.Sprintf("../inputs/2022/sample/day%02d.txt", day)
 	} else {
 		inputPath = fmt.Sprintf("./inputs/2022/day%02d.txt", day)
 	}
