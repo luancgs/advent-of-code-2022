@@ -6,9 +6,9 @@
 package day12
 
 import (
+	"adventofcode2022/utils/input"
 	"fmt"
 	"math"
-	"os"
 	"sort"
 	"strings"
 )
@@ -42,16 +42,10 @@ func (s square) canClimb(nextSquare square) bool {
 	return nextSquare.height <= s.height+1
 }
 
-func getInput() ([][]square, []int, []int, error) {
-	inputPath := "./inputs/2022/day12.txt"
+func formatInput(reader input.InputReader) ([][]square, []int, []int, error) {
+	content := reader.GetInput(12)
 
-	content, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return nil, nil, nil, err
-	}
-
-	contentLines := strings.Split(string(content), "\n")
+	contentLines := strings.Split(content, "\n")
 
 	var heightMap [][]rune
 
@@ -88,8 +82,8 @@ func getInput() ([][]square, []int, []int, error) {
 	return output, outputStart, outputEnd, nil
 }
 
-func Part1() (int, error) {
-	heightMap, startIndex, endIndex, err := getInput()
+func Part1(reader input.InputReader) (int, error) {
+	heightMap, startIndex, endIndex, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -157,8 +151,8 @@ func Part1() (int, error) {
 	return (*endSquare).shortestDistance, nil
 }
 
-func Part2() (int, error) {
-	heightMap, startIndex, endIndex, err := getInput()
+func Part2(reader input.InputReader) (int, error) {
+	heightMap, startIndex, endIndex, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
