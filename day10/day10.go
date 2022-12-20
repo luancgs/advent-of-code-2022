@@ -6,21 +6,15 @@
 package day10
 
 import (
-	"os"
+	"adventofcode2022/utils/input"
 	"strconv"
 	"strings"
 )
 
-func getInput() ([][]int, error) {
-	inputPath := "./inputs/2022/day10.txt"
+func formatInput(reader input.InputReader) ([][]int, error) {
+	content := reader.GetInput(10)
 
-	input, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return nil, err
-	}
-
-	commands := strings.Split(string(input), "\n")
+	commands := strings.Split(content, "\n")
 
 	var output [][]int
 
@@ -64,8 +58,8 @@ func cyclePart2(cpuCycle int, cpuRegister int, screen *[][]string) {
 	}
 }
 
-func Part1() (int, error) {
-	input, err := getInput()
+func Part1(reader input.InputReader) (int, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -92,8 +86,8 @@ func Part1() (int, error) {
 	return signalSum, nil
 }
 
-func Part2() (string, error) {
-	input, err := getInput()
+func Part2(reader input.InputReader) (string, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return "", err
