@@ -115,8 +115,8 @@ func createArea(allRocks []Rock) [][]Element {
 	return area
 }
 
-func formatInput() ([][]Element, error) {
-	content := input.GetInput(14)
+func formatInput(reader input.InputReader) ([][]Element, error) {
+	content := reader.GetInput(14)
 
 	rockPathsInput := strings.Split(content, "\n")
 	var rockPaths [][]Rock
@@ -156,9 +156,9 @@ func formatInput() ([][]Element, error) {
 	return area, nil
 }
 
-func Part1() (int, error) {
+func Part1(reader input.InputReader) (int, error) {
 
-	cave, err := formatInput()
+	cave, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -191,8 +191,8 @@ func Part1() (int, error) {
 	return countSand, nil
 }
 
-func Part2() (int, error) {
-	cave, err := formatInput()
+func Part2(reader input.InputReader) (int, error) {
+	cave, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
