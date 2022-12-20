@@ -6,21 +6,15 @@
 package day08
 
 import (
-	"os"
+	"adventofcode2022/utils/input"
 	"strconv"
 	"strings"
 )
 
-func getInput() ([][]int, error) {
-	inputPath := "./inputs/2022/day08.txt"
+func formatInput(reader input.InputReader) ([][]int, error) {
+	content := reader.GetInput(8)
 
-	input, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return nil, err
-	}
-
-	treeLines := strings.Split(string(input), "\n")
+	treeLines := strings.Split(content, "\n")
 	var treeGrid [][]int
 
 	for _, treeLine := range treeLines {
@@ -161,8 +155,8 @@ func treeScenicScore(tree int, treeGrid [][]int, line int, column int) int {
 	return viewingDistanceUp * viewingDistanceDown * viewingDistanceLeft * viewingDistanceRight
 }
 
-func Part1() (int, error) {
-	treeGrid, err := getInput()
+func Part1(reader input.InputReader) (int, error) {
+	treeGrid, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -183,8 +177,8 @@ func Part1() (int, error) {
 	return countVisible, nil
 }
 
-func Part2() (int, error) {
-	treeGrid, err := getInput()
+func Part2(reader input.InputReader) (int, error) {
+	treeGrid, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
