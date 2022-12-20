@@ -6,7 +6,7 @@
 package day07
 
 import (
-	"os"
+	"adventofcode2022/utils/input"
 	"sort"
 	"strconv"
 	"strings"
@@ -28,19 +28,13 @@ type dir struct {
 const internalSpace int = 70000000
 const updateSpace int = 30000000
 
-func getInput() (dir, error) {
-	inputPath := "./inputs/2022/day07.txt"
-
-	content, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return dir{nil, "", 0, []file{}, make(map[string]*dir)}, err
-	}
+func formatInput(reader input.InputReader) (dir, error) {
+	content := reader.GetInput(7)
 
 	var currentDir *dir
 	root := dir{nil, "/", 0, []file{}, make(map[string]*dir)}
 
-	terminalOutput := strings.Split(string(content), "\n")
+	terminalOutput := strings.Split(content, "\n")
 
 	for _, terminalLine := range terminalOutput {
 
@@ -125,8 +119,8 @@ func getPart2PossibleDirs(directory *dir, possibleDirsArray *[]dir, unusedSpace 
 	}
 }
 
-func Part1() (int, error) {
-	root, err := getInput()
+func Part1(reader input.InputReader) (int, error) {
+	root, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -140,8 +134,8 @@ func Part1() (int, error) {
 
 }
 
-func Part2() (int, error) {
-	root, err := getInput()
+func Part2(reader input.InputReader) (int, error) {
+	root, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
