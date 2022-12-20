@@ -6,9 +6,9 @@
 package day11
 
 import (
+	"adventofcode2022/utils/input"
 	"fmt"
 	"math"
-	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -91,16 +91,10 @@ func throwItems(monkey int, monkeysPointer *[]monkey, reliefFactor bool) error {
 	return nil
 }
 
-func getInput() ([]monkey, error) {
-	inputPath := "./inputs/2022/day11.txt"
+func formatInput(reader input.InputReader) ([]monkey, error) {
+	content := reader.GetInput(11)
 
-	input, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return nil, err
-	}
-
-	inputMonkeys := strings.Split(string(input), "\n\n")
+	inputMonkeys := strings.Split(content, "\n\n")
 
 	var monkeys []monkey
 
@@ -157,8 +151,8 @@ func getInput() ([]monkey, error) {
 
 }
 
-func Part1() (int, error) {
-	monkeys, err := getInput()
+func Part1(reader input.InputReader) (int, error) {
+	monkeys, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -182,8 +176,8 @@ func Part1() (int, error) {
 	return monkeyInspects[0] * monkeyInspects[1], nil
 }
 
-func Part2() (int, error) {
-	monkeys, err := getInput()
+func Part2(reader input.InputReader) (int, error) {
+	monkeys, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
