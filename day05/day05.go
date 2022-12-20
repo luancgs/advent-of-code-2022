@@ -6,28 +6,21 @@
 package day05
 
 import (
+	"adventofcode2022/utils/input"
 	S "adventofcode2022/utils/stack"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func getInput() (string, string, error) {
-	inputPath := "./inputs/2022/day05.txt"
-
-	content, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return "", "", err
-	}
-
-	splitContent := strings.Split(string(content), "\n\n")
+func formatInput(reader input.InputReader) (string, string, error) {
+	content := reader.GetInput(5)
+	splitContent := strings.Split(content, "\n\n")
 
 	return splitContent[0], splitContent[1], nil
 }
 
-func getInputStacks() ([]S.Stack, error) {
-	inputStacks, _, err := getInput()
+func getInputStacks(reader input.InputReader) ([]S.Stack, error) {
+	inputStacks, _, err := formatInput(reader)
 
 	if err != nil {
 		return nil, err
@@ -61,8 +54,8 @@ func getInputStacks() ([]S.Stack, error) {
 	return stackArray, nil
 }
 
-func getInputMovements() ([][]int, error) {
-	_, inputMovements, err := getInput()
+func getInputMovements(reader input.InputReader) ([][]int, error) {
+	_, inputMovements, err := formatInput(reader)
 
 	if err != nil {
 		return nil, err
@@ -104,15 +97,15 @@ func getInputMovements() ([][]int, error) {
 	return movementsArray, nil
 }
 
-func Part1() (string, error) {
+func Part1(reader input.InputReader) (string, error) {
 
-	stacks, err := getInputStacks()
+	stacks, err := getInputStacks(reader)
 
 	if err != nil {
 		return "", err
 	}
 
-	movements, err := getInputMovements()
+	movements, err := getInputMovements(reader)
 
 	if err != nil {
 		return "", err
@@ -151,14 +144,14 @@ func Part1() (string, error) {
 	return sb.String(), nil
 }
 
-func Part2() (string, error) {
-	stacks, err := getInputStacks()
+func Part2(reader input.InputReader) (string, error) {
+	stacks, err := getInputStacks(reader)
 
 	if err != nil {
 		return "", err
 	}
 
-	movements, err := getInputMovements()
+	movements, err := getInputMovements(reader)
 
 	if err != nil {
 		return "", err
