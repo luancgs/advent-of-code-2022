@@ -114,8 +114,8 @@ func newRoundPart2(opponentInput string, myInput string) gameRoundPart2 {
 	return round
 }
 
-func formatInput(input input.InputReader) ([][]string, error) {
-	content := input.GetInput(2)
+func formatInput(reader input.InputReader) ([][]string, error) {
+	content := reader.GetInput(2)
 
 	var output [][]string
 
@@ -135,8 +135,8 @@ func formatInput(input input.InputReader) ([][]string, error) {
 	return output, nil
 }
 
-func Part1(input input.InputReader) (int, error) {
-	content, err := formatInput(input)
+func Part1(reader input.InputReader) (int, error) {
+	content, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -151,8 +151,8 @@ func Part1(input input.InputReader) (int, error) {
 	return myScore, nil
 }
 
-func Part2(input input.InputReader) (int, error) {
-	content, err := formatInput(input)
+func Part2(reader input.InputReader) (int, error) {
+	content, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
