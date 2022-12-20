@@ -12,8 +12,8 @@ import (
 	"strings"
 )
 
-func formatInput() ([][]int, error) {
-	content := input.GetInput(1)
+func formatInput(reader input.InputReader) ([][]int, error) {
+	content := reader.GetInput(1)
 
 	elvesCaloriesSlice := strings.Split(content, "\n\n")
 	var elvesCaloriesSliceInt [][]int
@@ -42,8 +42,8 @@ func formatInput() ([][]int, error) {
 	return elvesCaloriesSliceInt, nil
 }
 
-func Part1() (int, error) {
-	input, err := formatInput()
+func Part1(reader input.InputReader) (int, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -66,9 +66,9 @@ func Part1() (int, error) {
 	return greatestSum, nil
 }
 
-func Part2() (int, error) {
+func Part2(reader input.InputReader) (int, error) {
 
-	input, err := formatInput()
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
