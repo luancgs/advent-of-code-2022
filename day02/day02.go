@@ -6,7 +6,7 @@
 package day02
 
 import (
-	"os"
+	"adventofcode2022/utils/input"
 	"strings"
 )
 
@@ -114,18 +114,12 @@ func newRoundPart2(opponentInput string, myInput string) gameRoundPart2 {
 	return round
 }
 
-func getInput() ([][]string, error) {
-	inputPath := "./inputs/2022/day02.txt"
-
-	content, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return nil, err
-	}
+func formatInput(input input.InputReader) ([][]string, error) {
+	content := input.GetInput(2)
 
 	var output [][]string
 
-	roundsArray := strings.Split(string(content), "\n")
+	roundsArray := strings.Split(content, "\n")
 
 	for _, element := range roundsArray {
 
@@ -141,8 +135,8 @@ func getInput() ([][]string, error) {
 	return output, nil
 }
 
-func Part1() (int, error) {
-	input, err := getInput()
+func Part1(input input.InputReader) (int, error) {
+	content, err := formatInput(input)
 
 	if err != nil {
 		return 0, err
@@ -150,15 +144,15 @@ func Part1() (int, error) {
 
 	myScore := 0
 
-	for _, round := range input {
+	for _, round := range content {
 		myScore += newRoundPart1(round[0], round[1]).getScore()
 	}
 
 	return myScore, nil
 }
 
-func Part2() (int, error) {
-	input, err := getInput()
+func Part2(input input.InputReader) (int, error) {
+	content, err := formatInput(input)
 
 	if err != nil {
 		return 0, err
@@ -166,7 +160,7 @@ func Part2() (int, error) {
 
 	myScore := 0
 
-	for _, round := range input {
+	for _, round := range content {
 		myScore += newRoundPart2(round[0], round[1]).getScore()
 	}
 
