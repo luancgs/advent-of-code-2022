@@ -6,9 +6,9 @@
 package day09
 
 import (
+	"adventofcode2022/utils/input"
 	"fmt"
 	"math"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -112,18 +112,12 @@ func getDirectionNumber(direction string) int {
 	}
 }
 
-func getInput() ([][]int, error) {
-	inputPath := "./inputs/2022/day09.txt"
-
-	input, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return nil, err
-	}
+func formatInput(reader input.InputReader) ([][]int, error) {
+	content := reader.GetInput(9)
 
 	var output [][]int
 
-	headSequences := strings.Split(string(input), "\n")
+	headSequences := strings.Split(content, "\n")
 	for _, sequenceString := range headSequences {
 
 		if sequenceString == "" {
@@ -148,8 +142,8 @@ func getInput() ([][]int, error) {
 	return output, nil
 }
 
-func Part1() (int, error) {
-	input, err := getInput()
+func Part1(reader input.InputReader) (int, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -166,8 +160,8 @@ func Part1() (int, error) {
 	return len(r.tailPath), nil
 }
 
-func Part2() (int, error) {
-	input, err := getInput()
+func Part2(reader input.InputReader) (int, error) {
+	input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
