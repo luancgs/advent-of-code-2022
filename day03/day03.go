@@ -6,20 +6,14 @@
 package day03
 
 import (
-	"os"
+	"adventofcode2022/utils/input"
 	"strings"
 )
 
 const allItems = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-func getInput() ([]string, [][]string, error) {
-	inputPath := "./inputs/2022/day03.txt"
-
-	content, err := os.ReadFile(inputPath)
-
-	if err != nil {
-		return nil, nil, err
-	}
+func formatInput(reader input.InputReader) ([]string, [][]string, error) {
+	content := reader.GetInput(3)
 
 	rucksacksArray := strings.Split(string(content), "\n")
 	var splitedRucksacksArray [][]string
@@ -39,9 +33,9 @@ func getInput() ([]string, [][]string, error) {
 	return filteredRucksacksArray, splitedRucksacksArray, nil
 }
 
-func Part1() (int, error) {
+func Part1(reader input.InputReader) (int, error) {
 
-	_, input, err := getInput()
+	_, input, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
@@ -64,8 +58,8 @@ func Part1() (int, error) {
 	return prioritySum, nil
 }
 
-func Part2() (int, error) {
-	input, _, err := getInput()
+func Part2(reader input.InputReader) (int, error) {
+	input, _, err := formatInput(reader)
 
 	if err != nil {
 		return 0, err
